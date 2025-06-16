@@ -15,5 +15,6 @@ spec:
       containers:
         - name: company-profile
           image: company-profile:latest
+          imagePullPolicy: Never
           ports:
             - containerPort: 80
