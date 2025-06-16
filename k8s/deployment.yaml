@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: company-profile-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: company-profile
+  template:
+    metadata:
+      labels:
+        app: company-profile
+    spec:
+      containers:
+        - name: company-profile
+          image: company-profile:latest
+          ports:
+            - containerPort: 80
