@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: project-final13
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: project-final13
+  template:
+    metadata:
+      labels:
+        app: project-final13
+    spec:
+      containers:
+        - name: project-final13
+          image: project-final13-web:latest
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: project-final13-service
+spec:
+  selector:
+    app: project-final13
+  type: NodePort
+  ports:
+    - port: 80
+      targetPort: 80
