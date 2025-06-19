@@ -6,6 +6,7 @@ pipeline {
         DOCKER_TAG = 'latest'
         DOCKER_CREDENTIALS_ID = 'dockerhub-credentials'
         K8S_NAMESPACE = 'default'
+        DISCORD_WEBHOOK = 'https://discord.com/api/webhooks/1385272768718966884/rbdcP8PJsFR77FZWxCCvWwgBTl9BmPyQSIZK8BUB3D-qIXwzW5rYvovR3Ghpn1zmi06z'
     }
 
     stages {
@@ -61,11 +62,8 @@ pipeline {
     }
 
     post {
-        success {
-            echo 'Pipeline completed successfully!'
-        }
-        failure {
-            echo 'Pipeline failed.'
+        always {
+            discordSend description: "Name: ${env.JOB_NAME}\nBuild: ${env.BUILD_NUMBER} \nStatus: ${currentBuild.currentResult} \nBranch: ${env.BRANCH_NAME}", customUsername: "Jenkins Notification" , enableArtifactsList: true, footer: "Mirza Maulana Azmi", link: env.BUILD_URL , showChangeset: true, result: currentBuild.currentResult, title: "Build Status of " + env.JOB_NAME, webhookURL: "${DISCORD_WEBHOOK}"
         }
     }
 }
