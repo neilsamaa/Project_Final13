@@ -63,7 +63,7 @@ pipeline {
 
     post {
         always {
-            discordSend description: "Name: ${env.JOB_NAME}\nBuild: ${env.BUILD_NUMBER} \nStatus: ${currentBuild.currentResult} \nBranch: ${env.BRANCH_NAME}", customUsername: "Jenkins Notification" , enableArtifactsList: true, footer: "Mirza Maulana Azmi", link: env.BUILD_URL , showChangeset: true, result: currentBuild.currentResult, title: "Build Status of " + env.JOB_NAME, webhookURL: "${DISCORD_WEBHOOK}"
+            discordSend description: "Name: ${env.JOB_NAME}\nBuild: ${env.BUILD_NUMBER} \nStatus: ${currentBuild.currentResult} \nBranch: main", customUsername: "Jenkins Notification" , enableArtifactsList: true, footer: "Mirza Maulana Azmi", link: env.BUILD_URL , showChangeset: true, result: currentBuild.currentResult, title: "Build Status of " + env.JOB_NAME, webhookURL: "${DISCORD_WEBHOOK}"
         }
     }
 }
