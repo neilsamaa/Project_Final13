@@ -27,6 +27,14 @@ pipeline {
             }
         }
 
+        stage('Apply Secret to Kubernetes') {
+            steps {
+                script {
+                    sh "kubectl apply -f k8s/docker-registry-secret.yaml --namespace ${K8S_NAMESPACE}"
+                }
+            }
+        }
+
         stage('Apply Deployment to Kubernetes') {
             steps {
                 script {
