@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: project-final13
-          image: project-final13-web:latest
+          image: 10.252.10.21:5000/company-profile:latest
           imagePullPolicy: Never
           ports:
             - containerPort: 80
