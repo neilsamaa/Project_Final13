@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        DOCKER_IMAGE = '10.252.10.21/company-profile'
+        DOCKER_IMAGE = '10.252.10.21:5000/company-profile'
         DOCKER_TAG = 'latest'
         DOCKER_CREDENTIALS_ID = 'dockerhub-credentials'
         K8S_NAMESPACE = 'default'
