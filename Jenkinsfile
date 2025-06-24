@@ -18,6 +18,15 @@ pipeline {
             }
         }
 
+        stage("Test"){
+            steps{
+                withSonarQubeEnv('sonar-server') {
+                    sh ''' $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=company-profile \
+                    -Dsonar.projectKey=company-profile '''
+                }
+            }
+        }
+    
         stage('Push to DockerHub') {
             steps {
                 script {
