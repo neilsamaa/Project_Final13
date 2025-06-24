@@ -21,7 +21,7 @@ pipeline {
         stage("Test"){
             steps{
                 withSonarQubeEnv('sonar-server') {
-                    sh ''' $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=company-profile \
+                    sh ''' docker exec -it sonarqube-custom sonar-scanner -Dsonar.projectName=company-profile \
                     -Dsonar.projectKey=company-profile '''
                 }
             }
